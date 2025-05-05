@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Login AICOM</title>
+  <style>
+    body {
+      display: flex;
+      height: 100vh;
+      align-items: center;
+      justify-content: center;
+      font-family: sans-serif;
+      background: #f2f2f2;
+    }
+
+    .login {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 300px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .error {
+      color: red;
+      margin-top: 10px;
+      text-align: center;
+    }
+  </style>
+<style type="text/css">
+.grande { font-size: 60px; }
+</style>
+<script>
+// Escribir aqui el código Javascript
+</script>
+</head>
+<body>
+
+  <div class="login">
+    <h2>Iniciar sesión IDEmi</h2>
+    <input type="text" id="usuario" placeholder="Usuario">
+    <input type="password" id="contrasena" placeholder="Contraseña">
+    <button onclick="verificarLogin()">Entrar</button>
+    <div id="mensaje" class="error"></div>
+  </div>
+
+  <script>
+    // Aquí defines los usuarios y sus mensajes personalizados.
+    const usuariosValidos = [
+      { 
+        usuario: "ceoemilio", 
+        contrasena: "turn19", 
+        nombre: "CEO Emilio Ruiz", 
+        mensaje: "¡Hola CEO! Recuerda que tienes que revisar tu correo para ver si hay nuevos clientes. Puedes enviar el formulario a quien esté interesado. Además, Excel tiene el registro de Alumnos, su estado de cuenta, asistencias y su boleta. Classroom tiene las tareas, recursos y se sube la boleta, y este Login es para que los alumnos consulten sus calificaciones de los mocks y si son aptos para algo. Cuando tengas alumnos podrás volver a modificar el codigo principal para añadrilos y su información."
+      },
+      { 
+        usuario: "leomartinez", 
+        contrasena: "1234", 
+        nombre: "Leonardo Martínez", 
+        mensaje: "Nombre: Leonardo Martínez| Idioma: Inglés| Nivel:Intermediate|Certificación: Sí| Resultado examen de admisión para Intermediate: Aprobado"
+      },
+      { 
+        usuario: "juanlopez", 
+        contrasena: "abcd", 
+        nombre: "Juan lópez", 
+        mensaje: "Nombre: Juan López| Idioma: Francés| Nivel:Por confirmar| Certificación:No| Resultado examen de admisión para Troisieme: No Aprovado"
+      }
+    ];
+
+    // Verificar si el usuario y la contraseña son correctos
+    function verificarLogin() {
+      const usuario = document.getElementById('usuario').value;
+      const contrasena = document.getElementById('contrasena').value;
+      const mensaje = document.getElementById('mensaje');
+
+      // Buscar si el usuario existe en la lista de usuarios
+      const usuarioValido = usuariosValidos.find(u => u.usuario === usuario && u.contrasena === contrasena);
+
+      if (usuarioValido) {
+        // Guardamos el nombre y el mensaje del usuario en localStorage
+        localStorage.setItem('usuario', usuarioValido.nombre);
+        localStorage.setItem('mensaje', usuarioValido.mensaje);
+
+        // Redirigir a la página secreta
+        window.location.href = "pagina-secreta.html";
+      } else {
+        mensaje.textContent = "Usuario o contraseña incorrectos.";
+      }
+    }
+  </script>
+
+
+
+
+</body></html>
